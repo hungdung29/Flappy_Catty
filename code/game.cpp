@@ -11,7 +11,26 @@ Game::~Game() {
 
 void Game::Initialize() {
     // Initialize SDL, create window, renderer, and load resources
+    SDL_Init( SDL_INIT_EVERYTHING );
 
+    SDL_Window *window = SDL_CreateWindow( "Flappy Catty", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, SDL_WINDOW_ALLOW_HIGHDPI );
+
+    if ( NULL == window )
+    {
+        cout << "Could not create window" << SDL_GetError() << endl;
+        return 1;
+    }
+
+    SDL_Event windowEvent;
+
+    while ( true )
+    {
+        if ( SDL_PollEvent( &windowEvent ) )
+        {
+            if ( SDL_QUIT == windowEvent.type )
+            { break; }
+        }
+    }
     catty = new Catty(renderer);
 
     for (int i = 0; i < numPipes; ++i) {
@@ -76,4 +95,6 @@ void Game::Render() {
 
 void Game::Cleanup() {
     // Release resources and close SDL
+    SDL_DestroyWindow( window );
+    SDL_Quit( );
 }

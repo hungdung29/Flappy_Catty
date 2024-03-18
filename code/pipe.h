@@ -11,6 +11,12 @@ public:
     void Draw();
 
 private:
+    static const int pipeWidth = 50;
+    static const int pipeHeight = 400;
+    static const int pipeDistance = 220;
+    static const int screenHeight = 625;
+    static const int screenWidth = 350;
+
     float xPos, yPos;
     float xVelocity;
     SDL_Texture* texture;

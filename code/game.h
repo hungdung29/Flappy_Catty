@@ -6,10 +6,10 @@
 
 class Game {
 public:
-    static const short int numPipes = 5;
-    static const short int screenWidth = 800;
-    static const short int screenHeight = 600;
-    static const short int pipeSpacing = 200;
+    static const short int numPipes = 4;
+    static const short int screenWidth = 350;
+    static const short int screenHeight = 625;
+    static const short int pipeSpacing = 160;
 
     float deltaTime;
     

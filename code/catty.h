@@ -13,6 +13,9 @@ public:
     void Draw();
 
 private:
+    static const int catWidth = 50;
+    static const int catHeight = 35;
+    
     float xPos, yPos;
     float yVelocity;
     SDL_Texture* texture;
