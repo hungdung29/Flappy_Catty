@@ -1,23 +1,27 @@
 #pragma once
 
 #include <SDL.h>
+#include "lib.h"
 
-class Catty
+class Catty:gTexture
 {
 public: 
-    Catty(SDL_Renderer* renderer);
+    bool init();    
+
+    void render();
     ~Catty();
 
+    void fall();
+
     void HandleInput(SDL_Event &event);
-    void Update(float deltaTime);
-    void Draw();
+    void UpdateTime();
+
+    
 
 private:
-    static const int catWidth = 50;
-    static const int catHeight = 35;
+    short int angle, time ,x0;
+    short int yVelocity;
+    string saved_path;
+    position posCatty;
     
-    float xPos, yPos;
-    float yVelocity;
-    SDL_Texture* texture;
-    SDL_Renderer* renderer;
 };
