@@ -3,7 +3,10 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/src/include/SDL2",
+                "${workspaceFolder}/src/include/SDL2",
+                "${workspaceFolder}/code"
             ],
             "defines": [
                 "_DEBUG",
