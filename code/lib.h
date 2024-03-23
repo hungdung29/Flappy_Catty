@@ -37,8 +37,8 @@ class gTexture {
         short int gWidth;
         short int gHeight;
 
-        static const short int screenWidth = 350; //If screen ratio is 18:9, 350->300
-        static const short int screenHeight = 625; //If screen ratio is 18:9, 625->600
+        static const short int screenWidth = 350; 
+        static const short int screenHeight = 625; 
         static const short int PipeSpacing = 160;
         static const short int TOTAL_PIPE = 5;
         static const short int PipeDistance = 220;

@@ -6,7 +6,7 @@
 class Catty:gTexture
 {
 public: 
-    bool init();    
+    bool Draw();    
 
     void render();
     ~Catty();
@@ -14,12 +14,14 @@ public:
     void fall();
 
     void HandleInput(SDL_Event &event);
-    void UpdateTime();
+    void UpdateTime() {time = 0};
 
     
 
 private:
     short int angle, time ,x0;
+    short int v0;
+    short int acceleration;
     short int yVelocity;
     string saved_path;
     position posCatty;
