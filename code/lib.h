@@ -37,11 +37,16 @@ class gTexture {
         short int gWidth;
         short int gHeight;
 
+        static bool die;
+        static short int score;
+
         static const short int screenWidth = 350; 
         static const short int screenHeight = 625; 
         static const short int PipeSpacing = 160;
-        static const short int TOTAL_PIPE = 5;
+        static const short int numPipes = 3;
         static const short int PipeDistance = 220;
         static const short int CattyWidth = 50;
         static const short int CattyHeight = 35;
+        static const short int LandHeight = 140;
+        static const short int PipeHeight = 360;
 }

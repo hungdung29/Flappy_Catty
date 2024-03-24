@@ -4,6 +4,8 @@
 SDL_Window* gTexture::window = NULL;
 SDL_Renderer* gTexture::renderer = NULL;
 SDL_Event gTexture::event;
+bool gTexture::die = true;
+short int gTexture::score = 0;
 
 gTexture::gTexture(){
     texture = NULL;
@@ -57,7 +59,7 @@ bool gTexture::Load (string path, double scale){
     return (texture != NULL);
 }
 
-bool LTexture::isNULL()
+bool gTexture::isNULL()
 {
     if (texture == NULL) return true;
     return false;
