@@ -1,29 +1,23 @@
 #pragma once
 
+#include "lib.h"
+#include <vector>
 #include <SDL.h>
 
-class Pipe{
+class Pipe:gTexture{
 public:
-    Pipe(SDL_Renderer* renderer, float x);
+    bool Draw();
     ~Pipe();
 
-    void Update(float deltaTime);
-    void Draw();
+    void render();
+
+    void update();
 
     void ResetPipePosition();
 
+    short int width() {return getWidth();}
+    short int height() {return getHeight();}
 private:
-    static const int pipeWidth = 50;
-    static const int pipeHeight = 400;
-    static const int pipeDistance = 220;
-    static const int screenHeight = 625;
-    static const int screenWidth = 350;
-
-    float xPos, yPos;
-    float xVelocity;
-    SDL_Texture* texture;
-    SDL_Renderer* renderer;
+    position posPipe [numPipes];
+    
 };
-
-extern const int pipeWidth;
-extern const int screenWidth;
