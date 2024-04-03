@@ -4,10 +4,11 @@
 #include <cstdlib>
 #include <vector>
 
+position posPipe [gTexture::numPipes] = {};
+
 bool Pipe::Draw() {
-    posPipe.clear();
     for (int i = 0; i < numPipes; i++){
-        posPipe[i].getPos (screenWidth + i * PipeDistance, (rand() % (screenHeight - LandHeight - PipeSpacing)) - PipeHeight);
+        posPipe[i].getPos (screenWidth + i * PipeDistance, (rand() % (screenHeight - LandHeight - PipeSpacing - 2 * PipeHeightMin)) - PipeHeight + PipeHeightMin);
     }
     if (isNULL())
     {
@@ -17,10 +18,10 @@ bool Pipe::Draw() {
 }
 
 Pipe::~Pipe() {
-    gTexture::~gTexture();  
+    
 }
 
-void pipe::render()
+void Pipe::render()
 {
     for (int i = 0; i < numPipes; i++)
     {
@@ -37,10 +38,10 @@ void Pipe::update() {
         for (int i = 0; i < numPipes; i++) {
             if (posPipe[i].x < 0){
                 posPipe[i].x = posPipe[(i + numPipes - 1) % numPipes].x + PipeDistance;
-                posPipe[i].y = (rand() % (screenHeight - LandHeight - PipeSpacing)) - PipeHeight;
+                posPipe[i].y = (rand() % (screenHeight - LandHeight - PipeSpacing - 2 * PipeHeightMin)) - PipeHeight + PipeHeightMin;
             }
             else {
-                posPipe[i].x--;
+                posPipe[i].x-=3;
             }
         }
     }

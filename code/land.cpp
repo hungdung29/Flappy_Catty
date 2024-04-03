@@ -5,13 +5,13 @@
 bool Land::Draw(){
     posLand.getPos (0, screenHeight - LandHeight);
     if (isNULL()){
-        if (Load ("res/image/pipe.png", 1)) return true;
+        if (Load ("res/image/land.png", 1)) return true;
     }
     return false;
 }
 
 Land::~Land(){
-    gTexture::~gTexture();
+    
 }
 
 void Land::render(){
@@ -25,5 +25,5 @@ void Land::render(){
     }
 }
 void Land::update(){
-    posLand.x--;
+    posLand.x-=3;
 }

@@ -7,7 +7,6 @@ class Land : gTexture{
 public:
     bool Draw();
     ~Land();
-    void NewFunction();
     void render();
 
     void update();

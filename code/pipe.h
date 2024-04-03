@@ -17,7 +17,10 @@ public:
 
     short int width() {return getWidth();}
     short int height() {return getHeight();}
-private:
-    position posPipe [numPipes];
+
+    const short int randMin = 60;
+
+    
     
 };
+extern position posPipe [gTexture::numPipes];

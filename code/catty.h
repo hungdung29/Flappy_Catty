@@ -2,6 +2,7 @@
 
 #include <SDL.h>
 #include "lib.h"
+#include "pipe.h"
 
 class Catty:gTexture
 {
@@ -13,8 +14,10 @@ public:
 
     void fall();
 
-    void HandleInput(SDL_Event &event);
-    void UpdateTime() {time = 0};
+    
+    void UpdateTime() {time = 0;}
+
+    void check(short int pipeWidth, short int pipeHeight);
 
     
 

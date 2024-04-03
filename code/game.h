@@ -1,32 +1,22 @@
 #pragma once
 
 #include <SDL.h>
+#include <SDL_image.h>
+
+#include "lib.h"
 #include "catty.h"
 #include "pipe.h"
+#include "setup.h"
+
+#include <stdlib.h>
 
 class Game {
 public:
-    static const short int numPipes = 4;
-    static const short int screenWidth = 350;
-    static const short int screenHeight = 625;
-    static const short int pipeSpacing = 160;
-
-    float deltaTime;
-    
     Game();
     ~Game();
 
     void Run();
-
 private:
-    void Initialize();
-    void ProcessInput();
-    void Update();
-    void Render();
-    void Cleanup();
-
-    SDL_Window* window;
-    SDL_Renderer* renderer;
-    Catty* catty;
-    Pipe* pipes[numPipes];
+    const short int FPS = 60;
+    const short int frameDelay = 1000 / FPS;    
 };

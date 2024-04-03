@@ -1,16 +1,17 @@
 #include "catty.h"
 #include "pipe.h"
 #include <iostream>
+#include <string>
 #include <SDL_image.h>
 
 bool Catty::Draw(){
     string catty_path = "res/image/catty.png";
     if (saved_path == catty_path){
-        posCatty.getPos (50, screenHeight / 2);
-        yVelocity = 0;
+        posCatty.getPos (50, (screenHeight - LandHeight)  / 2 );
+        acceleration = 0;
         angle = 0;
     }
-    if (isNULL() || saved_path != catty_path){
+    if (saved_path != catty_path){
         saved_path = catty_path;
         if ( (Load (catty_path.c_str(),1) ) ) return true;
         return false;
@@ -19,11 +20,11 @@ bool Catty::Draw(){
 }
 
 Catty::~Catty() {
-    gTexture::~gTexture();  
+
 }
 
 void Catty::render() {
-    Render (posCatty.x, Catty.y, angle);
+    Render (posCatty.x, posCatty.y, angle);
 }
 
 // void Catty::HandleInput(SDL_Event& event) {
@@ -39,7 +40,7 @@ void Catty::render() {
 void Catty::fall() {
     if (!die){
         if (time == 0) {
-            x0 = posDoge.y;
+            x0 = posCatty.y;
             angle = -25;
         }
 
@@ -53,7 +54,7 @@ void Catty::fall() {
 void Catty::check(short int pipeWidth, short int pipeHeight){
     if (!die){
         if (time == 0) {
-            x0 = posDoge.y;
+            x0 = posCatty.y;
             angle = -25;
         }
 
@@ -62,7 +63,7 @@ void Catty::check(short int pipeWidth, short int pipeHeight){
             time++;
         }
         
-        if (posDoge.y + getHeight() > screenHeight - LandHeight ) die = true;
+        if (posCatty.y + getHeight() > screenHeight - LandHeight ) die = true;
 
         if ( ((posCatty.x + getWidth() > posPipe[onward].x) && (posCatty.x < posPipe[onward].x + pipeWidth)) 
           && ((posCatty.y + getHeight() > posPipe[onward].y + pipeHeight + PipeSpacing) || posCatty.y < posPipe[onward].y + pipeHeight) )

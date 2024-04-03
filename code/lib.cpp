@@ -7,6 +7,7 @@ SDL_Event gTexture::event;
 bool gTexture::die = true;
 short int gTexture::score = 0;
 
+
 gTexture::gTexture(){
     texture = NULL;
 }
@@ -14,10 +15,12 @@ gTexture::gTexture(){
 short int gTexture::getWidth() { return gWidth; }
 short int gTexture::getHeight() { return gHeight; }
 
-void gTexture::~gTexture(){
+gTexture::~gTexture(){
     if (texture != NULL) {
         SDL_DestroyTexture (texture);
         texture = NULL;
+        gWidth = 0;
+        gHeight = 0;
     }
 }
 
@@ -33,7 +36,7 @@ void gTexture::Render (short int x, short int y, short int angle, SDL_Rect* clip
 }
 
 bool gTexture::Load (string path, double scale){
-    ~gTexture();
+    gTexture::~gTexture();
 
     SDL_Surface* surface = IMG_Load(path.c_str());
     if (surface == NULL){        
@@ -47,7 +50,7 @@ bool gTexture::Load (string path, double scale){
             SDL_Log ("Error creating texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
         }
         else {
-            gWeight = (surface->w) * scale;
+            gWidth = (surface->w) * scale;
             gHeight = (surface->h) * scale;
         }
 
