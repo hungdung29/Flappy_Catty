@@ -16,7 +16,6 @@ Game::~Game(){
 void Game::Run() {
     bool isRunning = true;
     Uint32 ticks;
-    
     short int frameTime;
 
     Setup s;
@@ -30,6 +29,7 @@ void Game::Run() {
                 s.pipe.render();
 
                 s.pipe.Draw();
+                s.catty.Draw();
                 s.catty.render();
                 
                 s.Restart();
@@ -42,11 +42,13 @@ void Game::Run() {
         else {
             s.ProcessInput(isRunning);
 
-            const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+            s.catty.UpdateTime();
             
+            s.catty.render();
             s.pipe.render();
             s.land.render();
             
+            s.catty.check(s.pipe.width(),s.pipe.height());
             s.pipe.update();
             s.land.update();
 
