@@ -15,7 +15,7 @@ Land::~Land(){
 }
 
 void Land::render(){
-    if (-screenWidth < posLand.x && posLand.y <= 0) {
+    if (-screenWidth < posLand.x && posLand.x <= 0) {
         Render (posLand.x, posLand.y);
         Render (posLand.x + screenWidth, posLand.y);
     }
