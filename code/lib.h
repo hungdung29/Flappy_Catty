@@ -49,5 +49,5 @@ class gTexture {
         static const short int CattyHeight = 35;
         static const short int LandHeight = 140;
         static const short int PipeHeight = 360;
-        static const short int PipeHeightMin = 60;
+        static const short int PipeShowMin = 60;
 };

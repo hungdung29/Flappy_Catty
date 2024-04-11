@@ -17,16 +17,15 @@ public:
     
     void UpdateTime() {time = 0;}
 
-    void check(short int pipeWidth, short int pipeHeight);
+    void update(short int pipeWidth, short int pipeHeight);
 
     
 
 private:
-    short int angle, time ,x0;
-    short int v0;
-    short int acceleration;
+    short int angle, time, y0;
+    short int v0 = -7;
+    double acceleration = 0.36;
     short int onward = 0;
-    short int yVelocity;
     string saved_path;
     position posCatty;
     

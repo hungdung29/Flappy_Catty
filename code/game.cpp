@@ -21,10 +21,12 @@ void Game::Run() {
     Setup s;
 
     while (isRunning) {
-        ticks = SDL_GetTicks();
+        // ticks = SDL_GetTicks();
         if (s.isDie()){
+            s.userInput.Type = Setup::input::NONE;
             while (s.isDie() && isRunning){
                 s.ProcessInput(isRunning);
+
                 s.land.render();
                 s.pipe.render();
 
@@ -41,23 +43,29 @@ void Game::Run() {
         }
         else {
             s.ProcessInput(isRunning);
-
-            s.catty.UpdateTime();
             
+            const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+            if (currentKeyStates[SDL_SCANCODE_UP] || currentKeyStates[SDL_SCANCODE_SPACE]){
+                s.catty.UpdateTime();
+            }
+                  
             s.catty.render();
             s.pipe.render();
             s.land.render();
             
-            s.catty.check(s.pipe.width(),s.pipe.height());
+            s.catty.update(s.pipe.width(),s.pipe.height());
             s.pipe.update();
             s.land.update();
+
+            if (s.isDie()) s.catty.fall();
 
             s.Present();
 
         }
 
-        frameTime = SDL_GetTicks() - ticks;
-        if (frameDelay > frameTime) SDL_Delay (frameDelay - frameTime);
+        // frameTime = SDL_GetTicks() - ticks;
+        // if (frameDelay > frameTime) SDL_Delay (frameDelay - frameTime);
+        SDL_Delay(16);
 
         
     }

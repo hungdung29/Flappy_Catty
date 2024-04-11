@@ -18,9 +18,10 @@ public:
     short int width() {return getWidth();}
     short int height() {return getHeight();}
 
-    const short int randMin = 60;
+    const short int Max = screenHeight - LandHeight - PipeSpacing - PipeShowMin;
+    const short int Min = PipeShowMin;
 
-    
+       
     
 };
 extern position posPipe [gTexture::numPipes];
