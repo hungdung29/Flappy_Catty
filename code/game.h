@@ -10,7 +10,7 @@
 
 #include <stdlib.h>
 
-class Game {
+class Game: gTexture {
 public:
     Game();
     ~Game();

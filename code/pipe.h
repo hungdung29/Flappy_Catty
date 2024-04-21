@@ -11,9 +11,7 @@ public:
 
     void render();
 
-    void update();
-
-    void ResetPipePosition();
+    void update(); //Update position of pipe
 
     short int width() {return getWidth();}
     short int height() {return getHeight();}

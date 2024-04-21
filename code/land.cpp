@@ -11,7 +11,7 @@ bool Land::Draw(){
 }
 
 Land::~Land(){
-    
+    gTexture::~gTexture();
 }
 
 void Land::render(){

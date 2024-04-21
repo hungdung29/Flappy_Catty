@@ -10,6 +10,13 @@ using namespace std;
 
 class Setup: gTexture{
 public: 
+    struct input
+    {
+        enum type {QUIT, PLAY, NONE, PAUSE};
+        type Type;
+    };
+    input userInput;
+
     Setup();
     ~Setup();
 
@@ -17,8 +24,43 @@ public:
     bool isDie() { return die; }
 
     void ProcessInput(bool &isRunning);
-    //void Update();
-    //void Render();
+    
+    void renderScoreSmall();
+
+    void renderScoreLarge();
+
+    void renderBestScore();
+
+    void renderMessage();
+
+    void renderBackground();
+
+    void renderBackgroundNight();
+
+    void renderLand();
+
+    void resume();
+
+    void pause();
+
+    void renderPauseTab();
+
+    void lightTheme();
+
+    void darkTheme();
+
+    void nextButton();
+
+    bool changeTheme();
+
+    void renderGameOver();
+
+    void renderMedal();
+
+    void replay();
+
+    bool checkReplay();
+
     void Cleanup();
     void Present();
     void Restart();
@@ -27,5 +69,8 @@ public:
     Pipe pipe;
     Land land;
 
+private: 
+    const double scaleNumberS = 0.75;
+    short int bestScore;
 
 };

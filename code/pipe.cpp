@@ -19,7 +19,7 @@ bool Pipe::Draw() {
 }
 
 Pipe::~Pipe() {
-    
+    gTexture::~gTexture();
 }
 
 void Pipe::render()

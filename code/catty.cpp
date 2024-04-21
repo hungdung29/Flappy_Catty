@@ -20,7 +20,7 @@ bool Catty::Draw(){
 }
 
 Catty::~Catty() {
-
+    gTexture::~gTexture();
 }
 
 void Catty::render() {
@@ -28,7 +28,7 @@ void Catty::render() {
 }
 
 void Catty::fall() {
-    if (die){
+    if (die && posCatty.y < screenHeight - LandHeight - CattyHeight){
         if (time == 0) {
             y0 = posCatty.y;
             angle = -25;
