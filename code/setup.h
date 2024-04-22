@@ -60,6 +60,7 @@ public:
     void replay();
 
     bool checkReplay();
+    bool checkPause();
 
     void Cleanup();
     void Present();

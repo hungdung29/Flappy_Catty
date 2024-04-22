@@ -56,12 +56,13 @@ void Setup::ProcessInput(bool &isRunning){
             userInput.Type = input::QUIT;
             isRunning = false;
         }
+        else if (event.type == SDL_MOUSEBUTTONDOWN && checkPause()) userInput.Type = input::PAUSE;
         else if (event.type == SDL_MOUSEBUTTONDOWN || (event.type == SDL_KEYDOWN && 
 		(event.key.keysym.sym == SDLK_SPACE || event.key.keysym.sym == SDLK_UP) && event.key.repeat == 0) )
         {
             userInput.Type = input::PLAY;
         }
-		else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE && event.key.repeat == 0)
+		else if ((event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE && event.key.repeat == 0))
 		{
 			userInput.Type = input::PAUSE;
 		}           
@@ -360,6 +361,17 @@ bool Setup::checkReplay()
 	int x, y;
 	SDL_GetMouseState(&x, &y);
 	if (x > (screenWidth - 100)/2 && x < (screenWidth + 100) / 2 && y > 380 && y < 380 + 60)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool Setup::checkPause()
+{
+    int x, y;
+	SDL_GetMouseState(&x, &y);
+	if (x > screenWidth - 50 && x < screenWidth - 50 + 26 && y > 20 && y < 20 + 28)
 	{
 		return true;
 	}

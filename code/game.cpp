@@ -72,7 +72,7 @@ void Game::Run() {
             
             if (s.userInput.Type == Setup::input::PAUSE)
             {
-                isPause = abs(1 - isPause);
+                isPause = !isPause;
                 s.userInput.Type = Setup::input::NONE;
             }
 
@@ -115,7 +115,7 @@ void Game::Run() {
 
         frameTime = SDL_GetTicks() - ticks;
         if (frameDelay > frameTime) SDL_Delay (frameDelay - frameTime);
-                
+
     }
 }
 
