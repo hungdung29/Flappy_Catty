@@ -42,7 +42,11 @@ void Pipe::update() {
                 posPipe[i].y = (rand() % (Max - Min + 1)) - PipeHeight + Min;
             }
             else {
-                posPipe[i].x-=3;
+                posPipe[i].x -= 3;
+                if (posPipe[i].y % 50 == 0) move = -move;
+                if (posPipe[i].y + move > 0 || posPipe[i].y + move < -PipeHeight) move = -move;
+                //if (posPipe[i].y + PipeSpacing + move >= screenHeight - LandHeight) move = -move;
+                posPipe[i].y += move;
             }
         }
     }

@@ -267,7 +267,7 @@ void Setup::renderMessage()
 {
 	gTexture image;
 	image.Load("res/image/message.png", 1);
-	image.Render((screenWidth - image.getWidth()) / 2, 158);
+	image.Render((screenWidth - image.getWidth()) / 2, 155);
 	image.~gTexture();
 }
 

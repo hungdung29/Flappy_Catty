@@ -5,6 +5,9 @@
 #include <SDL.h>
 
 class Pipe:gTexture{
+    short int move = 3;
+    const short int Max = screenHeight - LandHeight - PipeSpacing - PipeShowMin;
+    const short int Min = PipeShowMin;
 public:
     bool Draw();
     ~Pipe();
@@ -14,12 +17,7 @@ public:
     void update(); //Update position of pipe
 
     short int width() {return getWidth();}
-    short int height() {return getHeight();}
-
-    const short int Max = screenHeight - LandHeight - PipeSpacing - PipeShowMin;
-    const short int Min = PipeShowMin;
-
-       
+    short int height() {return getHeight();}     
     
 };
 extern position posPipe [gTexture::numPipes];
