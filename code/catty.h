@@ -19,12 +19,11 @@ public:
 
     void update(short int pipeWidth, short int pipeHeight);
 
-    
+    double acceleration = 0.36;
 
 private:
     short int angle, time, y0;
     short int v0 = -7;
-    double acceleration = 0.36;
     short int onward = 0;
     string saved_path;
     position posCatty;

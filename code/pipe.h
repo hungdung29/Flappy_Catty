@@ -21,3 +21,4 @@ public:
     
 };
 extern position posPipe [gTexture::numPipes];
+extern int hiddenPipe;

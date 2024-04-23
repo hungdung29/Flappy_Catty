@@ -1,5 +1,6 @@
 #pragma once
 
+#include "add-ons.h"
 #include "catty.h"
 #include "pipe.h"
 #include "land.h"
@@ -45,17 +46,11 @@ public:
 
     void renderPauseTab();
 
-    void lightTheme();
-
-    void darkTheme();
-
     void nextButton();
 
     bool changeTheme();
 
     void renderGameOver();
-
-    void renderMedal();
 
     void replay();
 
@@ -69,6 +64,7 @@ public:
     Catty catty;
     Pipe pipe;
     Land land;
+    Addons addons;
 
 private: 
     const double scaleNumberS = 0.75;

@@ -5,6 +5,7 @@
 #include <vector>
 
 position posPipe [gTexture::numPipes];
+int hiddenPipe;
 
 bool Pipe::Draw() {
     posPipe [gTexture::numPipes] = {};
@@ -40,6 +41,7 @@ void Pipe::update() {
             if (posPipe[i].x < -getWidth()){
                 posPipe[i].x = posPipe[(i + numPipes - 1) % numPipes].x + PipeDistance;
                 posPipe[i].y = (rand() % (Max - Min + 1)) - PipeHeight + Min;
+                hiddenPipe = i;
             }
             else {
                 posPipe[i].x -= 3;
