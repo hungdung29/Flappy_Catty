@@ -10,6 +10,7 @@ Setup::Setup(){
     catty.Draw();
     pipe.Draw();
     land.Draw();
+    soundEffect.Initialize();
 }
 
 Setup::~Setup(){

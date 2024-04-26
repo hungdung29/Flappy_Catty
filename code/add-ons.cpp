@@ -41,6 +41,7 @@ void Addons::update(bool change)
         posAddons.y = (screenHeight - LandHeight) / 2;
     }
     if (score % 10 == 1) appear = true;
+    if (!change) appear = false;
     if (appear == false) {
         posAddons.x = screenWidth + 100;
     }

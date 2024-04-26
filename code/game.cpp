@@ -18,6 +18,7 @@ void Game::Run() {
     bool isMenu = 0;
     bool isPause = 0;
     bool isAddons = 0;
+    bool Mute = 0;
     Uint32 ticks;
     short int frameTime;
 
@@ -25,14 +26,15 @@ void Game::Run() {
 
     while (isRunning) {
         ticks = SDL_GetTicks();
-        if (s.isDie()){
+        if (die){
             if (isMenu) {
                 s.catty.render();
                 s.renderHeart();
                 s.renderHeartNum();
+                s.soundEffect.playHit();
             }
             s.userInput.Type = Setup::input::NONE;
-            while (s.isDie() && isRunning){
+            while (die && isRunning){
                 s.ProcessInput(isRunning);
                 if (isMenu == 1 && s.userInput.Type == Setup::input::PLAY)
                 {
@@ -56,6 +58,7 @@ void Game::Run() {
                     s.replay();
                 }
                 else {
+                    heart = 3;
                     s.pipe.Draw();
                     s.catty.Draw();
                     s.catty.render();
@@ -83,6 +86,8 @@ void Game::Run() {
             }
 
             if (isPause == 0 && s.userInput.Type == Setup::input::PLAY){
+                if (!Mute && !isAddons) s.soundEffect.playBreath();
+                if (!Mute && isAddons) s.soundEffect.playCat();
                 s.catty.UpdateTime();
                 s.userInput.Type = Setup::input::NONE;
             }
@@ -102,9 +107,8 @@ void Game::Run() {
                 s.updatetobeNormal();
             }
             if (!isPause){
-                if (isAddons) appear = false; 
                 s.addons.update(!isAddons);
-                if (s.checkAddons()) isAddons = true;
+                if (s.checkAddons()) {isAddons = true; appear = false;}
                 s.catty.update(s.pipe.width(),s.pipe.height());
                 if (isAddons) s.updatebyAddons();
                 s.pipe.update();
@@ -118,11 +122,18 @@ void Game::Run() {
                 s.renderBestScore();
                 s.replay();
                 s.nextButton();
+                s.soundEffect.renderSound();
                 if (s.userInput.Type == Setup::input::PLAY)
                 {
                     if (s.checkReplay()) isPause = 0;
+                    else if (s.soundEffect.checkSound()) Mute = !Mute;
                     s.userInput.Type = Setup::input::NONE;
                 }    
+            }
+            if (die && heart) {
+                die = false;
+                heart--;
+                onward = (onward + 1) % numPipes;
             }
             
             s.Present();

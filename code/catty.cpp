@@ -31,6 +31,7 @@ void Catty::render() {
 
 void Catty::fall() {
     if (die && posCatty.y < screenHeight - LandHeight - CattyHeight){
+        posCatty.x = posPipe[onward].x - CattyWidth + 5;
         if (time == 0) {
             y0 = posCatty.y;
             angle = -25;
@@ -57,7 +58,7 @@ void Catty::update(short int pipeWidth, short int pipeHeight){
             time++;
         }
         
-        if (posCatty.y + getHeight() > screenHeight - LandHeight ) die = true;
+        if (posCatty.y + getHeight() > screenHeight - LandHeight - 10) die = true;
 
         if ( ((posCatty.x + getWidth() > posPipe[onward].x) && (posCatty.x < posPipe[onward].x + pipeWidth)) 
           && ((posCatty.y + getHeight() > posPipe[onward].y + pipeHeight + PipeSpacing) || posCatty.y < posPipe[onward].y + pipeHeight) )

@@ -25,6 +25,6 @@ public:
     string addons_path;
 
     position posAddons;
-    short int randAddons;
+    short int randAddons = rand() % numAddons;
 };
 extern bool appear;

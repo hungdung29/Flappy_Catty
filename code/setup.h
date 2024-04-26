@@ -4,6 +4,7 @@
 #include "catty.h"
 #include "pipe.h"
 #include "land.h"
+#include "sound_effect.h"
 #include <string>
 #include <fstream>
 
@@ -22,7 +23,6 @@ public:
     ~Setup();
 
     bool Initialize();
-    bool isDie() { return die; }
 
     void ProcessInput(bool &isRunning);
     
@@ -73,6 +73,7 @@ public:
     Pipe pipe;
     Land land;
     Addons addons;
+    SoundEffect soundEffect;
 
 private: 
     const double scaleNumberS = 0.75;
