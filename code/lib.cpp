@@ -6,6 +6,7 @@ SDL_Renderer* gTexture::renderer = NULL;
 SDL_Event gTexture::event;
 bool gTexture::die = true;
 short int gTexture::score = 0;
+short int gTexture::heart = 3;
 
 
 gTexture::gTexture(){

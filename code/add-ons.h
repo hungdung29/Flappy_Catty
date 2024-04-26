@@ -2,22 +2,29 @@
 
 #include <SDL.h>
 #include "lib.h"
+#include "catty.h"
 #include "pipe.h"
 
 class Addons: gTexture
 {
-    const int numAddons = 4;    
-    string addons_path, saved_path;
-    position posAddons;
+    const short int numAddons = 3;    
+    string saved_path;
 public: 
     bool Draw();
     ~Addons();
+
+    short int width() {return getWidth();}
+    short int height() {return getHeight();}
     
     void render();
-    void update();
+    void update(bool change);
 
-    string heart_path = "res/image/heart.png";
     string lightning_path = "res/image/lightning.png";
     string gravity_path = "res/image/gravity.png";
     string stablity_path = "res/image/stablity.png";
+    string addons_path;
+
+    position posAddons;
+    short int randAddons;
 };
+extern bool appear;

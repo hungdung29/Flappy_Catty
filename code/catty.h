@@ -14,18 +14,20 @@ public:
 
     void fall();
 
+    short int width() {return getWidth();}
+    short int height() {return getHeight();}
     
     void UpdateTime() {time = 0;}
 
     void update(short int pipeWidth, short int pipeHeight);
 
     double acceleration = 0.36;
+    position posCatty;
 
 private:
     short int angle, time, y0;
     short int v0 = -7;
-    short int onward = 0;
-    string saved_path;
-    position posCatty;
+    string saved_path;  
     
 };
+extern short int onward;

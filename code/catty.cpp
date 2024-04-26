@@ -4,6 +4,8 @@
 #include <string>
 #include <SDL_image.h>
 
+short int onward = 0;
+
 bool Catty::Draw(){
     string catty_path = "res/image/catty.png";
     if (saved_path == catty_path){

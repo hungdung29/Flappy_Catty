@@ -6,6 +6,7 @@
 
 Setup::Setup(){
     Initialize();
+    addons.Draw();
     catty.Draw();
     pipe.Draw();
     land.Draw();
@@ -85,6 +86,9 @@ void Setup::Cleanup(){
 }
 void Setup::Restart(){
     die = false;
+    appear = false;
+    updatetobeNormal();
+    heart = 3;
     score = 0;
     catty.UpdateTime();
 } 
@@ -378,4 +382,96 @@ bool Setup::checkPause()
 	return false;
 }
 
+void Setup::updatebyAddons()
+{
+    if (addons.randAddons == 0){
+        pipe.pipeMove = 30;
+        die = false;
+    }
+    if (addons.randAddons == 1) {
+        catty.acceleration = 0.36 * 1.25;
+    }
+    if (addons.randAddons == 2) {
+        pipe.move = 0;
+    }
+}
 
+void Setup::updatetobeNormal(){
+    pipe.pipeMove = 3;
+    catty.acceleration = 0.36;
+    pipe.move = 3;
+}
+
+
+bool Setup::checkAddons()
+{
+    if (catty.posCatty.x + catty.width() > addons.posAddons.x && catty.posCatty.x < addons.posAddons.x + addons.width()
+     && catty.posCatty.y + catty.height() > addons.posAddons.y && catty.posCatty.y < addons.posAddons.y+ addons.height()) 
+    {
+        return true; 
+        appear = false;
+    }
+    return false;
+}
+
+void Setup::renderHeart()
+{
+	gTexture image;
+	image.Load("res/number/small/heart.png", 1);
+	image.Render(20, 20);
+	image.~gTexture();
+}
+
+void Setup::renderHeartNum()
+{
+    string s = to_string(heart);
+	signed char len = s.length();
+	gTexture image;
+
+	for (signed char i = 0; i < len; i++)
+	{
+		signed char number = s[i] - '0';
+		if (number == 1)
+		{
+			image.Load("res/number/small/1.png", 1);
+		}
+		else if (number == 2)
+		{
+			image.Load("res/number/small/2.png", 1);
+		}
+		else if (number == 3)
+		{
+			image.Load("res/number/small/3.png", 1);
+		}
+		else if (number == 4)
+		{
+			image.Load("res/number/small/4.png", 1);
+		}
+		else if (number == 5)
+		{
+			image.Load("res/number/small/5.png", 1);
+		}
+		else if (number == 6)
+		{
+			image.Load("res/number/small/6.png", 1);
+		}
+		else if (number == 7)
+		{
+			image.Load("res/number/small/7.png", 1);
+		}
+		else if (number == 8)
+		{
+			image.Load("res/number/small/8.png", 1);
+		}
+		else if (number == 9)
+		{
+			image.Load("res/number/small/9.png", 1);
+		}
+		else
+		{
+			image.Load("res/number/small/0.png", 1);
+		}
+		image.Render(20 + 34 + 5 + image.getWidth() * i + 2 * i, 20); //Heart_Weight = 34;
+	}
+	image.~gTexture();
+}

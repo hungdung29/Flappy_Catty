@@ -17,6 +17,7 @@ void Game::Run() {
     bool isRunning = true;
     bool isMenu = 0;
     bool isPause = 0;
+    bool isAddons = 0;
     Uint32 ticks;
     short int frameTime;
 
@@ -27,6 +28,8 @@ void Game::Run() {
         if (s.isDie()){
             if (isMenu) {
                 s.catty.render();
+                s.renderHeart();
+                s.renderHeartNum();
             }
             s.userInput.Type = Setup::input::NONE;
             while (s.isDie() && isRunning){
@@ -41,6 +44,8 @@ void Game::Run() {
                 
                 s.pipe.render();
                 s.land.render();
+                s.renderHeart();
+                s.renderHeartNum();
 
                 if (isMenu) {
                     s.catty.render();
@@ -57,6 +62,7 @@ void Game::Run() {
                     s.renderMessage();
                     if (s.userInput.Type == Setup::input::PLAY) {
                         s.Restart();
+                        isAddons = 0;
                         isMenu = 1;
                         s.userInput.Type = Setup::input::NONE;
                     }
@@ -86,10 +92,21 @@ void Game::Run() {
             s.catty.render();
             s.pipe.render();
             s.land.render();
+            if (appear) s.addons.render();
+            s.renderHeart();
+            s.renderHeartNum();
             s.renderScoreLarge();
-            
+            if (score % 10 == 7) {                
+                if (s.addons.randAddons == 0 && isAddons == true) {s.pipe.Draw();}
+                isAddons = false;
+                s.updatetobeNormal();
+            }
             if (!isPause){
+                if (isAddons) appear = false; 
+                s.addons.update(!isAddons);
+                if (s.checkAddons()) isAddons = true;
                 s.catty.update(s.pipe.width(),s.pipe.height());
+                if (isAddons) s.updatebyAddons();
                 s.pipe.update();
                 s.land.update();
                 s.pause();

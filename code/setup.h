@@ -57,6 +57,14 @@ public:
     bool checkReplay();
     bool checkPause();
 
+    void updatebyAddons();
+    void updatetobeNormal();
+    bool checkAddons();
+
+    void renderHeart();
+
+    void renderHeartNum();
+
     void Cleanup();
     void Present();
     void Restart();

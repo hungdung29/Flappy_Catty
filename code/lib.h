@@ -39,6 +39,7 @@ class gTexture {
 
         static bool die;
         static short int score;
+        static short int heart;
 
         static const short int screenWidth = 350; 
         static const short int screenHeight = 625; 
