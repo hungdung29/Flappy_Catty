@@ -1,6 +1,7 @@
 #pragma once
 
 #include "add-ons.h"
+#include "background.h"
 #include "catty.h"
 #include "pipe.h"
 #include "land.h"
@@ -52,6 +53,10 @@ public:
 
     void renderGameOver();
 
+    void lightTheme();
+
+    void darkTheme();
+
     void replay();
 
     bool checkReplay();
@@ -73,6 +78,7 @@ public:
     Pipe pipe;
     Land land;
     Addons addons;
+    Background background;
     SoundEffect soundEffect;
 
 private: 

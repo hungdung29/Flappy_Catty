@@ -476,3 +476,19 @@ void Setup::renderHeartNum()
 	}
 	image.~gTexture();
 }
+
+void Setup::lightTheme()
+{
+	gTexture image;
+	image.Load("res/image/icon.png", 1);
+	image.Render(105, 315);
+	image.~gTexture();
+}
+
+void Setup::darkTheme()
+{
+	gTexture image;
+	image.Load("res/image/icon-dark.png", 1);
+	image.Render(105, 315);
+	image.~gTexture();
+}

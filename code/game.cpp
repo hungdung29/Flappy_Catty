@@ -19,6 +19,7 @@ void Game::Run() {
     bool isPause = 0;
     bool isAddons = 0;
     bool Mute = 0;
+    bool isDark = 0;
     Uint32 ticks;
     short int frameTime;
 
@@ -42,7 +43,7 @@ void Game::Run() {
                     s.userInput.Type = Setup::input::NONE;
                 }
 
-                s.renderBackground();
+                s.background.render();
                 
                 s.pipe.render();
                 s.land.render();
@@ -61,6 +62,7 @@ void Game::Run() {
                     heart = 3;
                     s.pipe.Draw();
                     s.catty.Draw();
+                    s.background.Draw(isDark);
                     s.catty.render();
                     s.renderMessage();
                     if (s.userInput.Type == Setup::input::PLAY) {
@@ -92,7 +94,7 @@ void Game::Run() {
                 s.userInput.Type = Setup::input::NONE;
             }
 
-            s.renderBackground();
+            s.background.render();
                   
             s.catty.render();
             s.pipe.render();
@@ -108,6 +110,7 @@ void Game::Run() {
             }
             if (!isPause){
                 s.addons.update(!isAddons);
+                s.background.update();
                 if (s.checkAddons()) {isAddons = true; appear = false;}
                 s.catty.update(s.pipe.width(),s.pipe.height());
                 if (isAddons) s.updatebyAddons();
@@ -123,10 +126,16 @@ void Game::Run() {
                 s.replay();
                 s.nextButton();
                 s.soundEffect.renderSound();
+                if (isDark) s.lightTheme(); 
+                else s.darkTheme();
                 if (s.userInput.Type == Setup::input::PLAY)
                 {
                     if (s.checkReplay()) isPause = 0;
                     else if (s.soundEffect.checkSound()) Mute = !Mute;
+                    else if (s.changeTheme()) {
+                        isDark = !isDark;
+                        s.background.Draw(isDark);
+                    }
                     s.userInput.Type = Setup::input::NONE;
                 }    
             }
