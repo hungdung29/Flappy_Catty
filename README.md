@@ -69,19 +69,19 @@ Sau đó click chuột vào bất kì vị trí nào ở màn hình game hoặc 
 Người chơi sẽ sử dụng 1 trong 3 cách: Nhấp chuột, nhấn phím Space hoặc nhấn phím Up để mèo bay lên kết hợp với việc để mèo rơi tự do để điều khiển mèo qua các ống hiện ra.
 Bên cạnh đó sẽ có những bổ trợ để hỗ trợ người chơi:
 
-![image](res/image/lightning.png)
+![image](preview/lightning.png)
 
 </div>
 
 Đây là bổ trợ giúp chú mèo của bạn có thể vượt qua một số cột nhanh chóng mà không gặp vấn đề gì.
 
-![image](res/image/gravity.png)
+![image](preview/gravity.png)
 
 </div>
 
 Đây là bổ trợ khiến cho gia tốc trọng trường tăng lên.
 
-![image](res/image/stablity.png)
+![image](preview/stablity.png)
 
 </div>
 
