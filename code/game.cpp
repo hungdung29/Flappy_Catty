@@ -126,7 +126,7 @@ void Game::Run() {
                 s.replay();
                 s.nextButton();
                 s.soundEffect.renderSound();
-                if (isDark) s.lightTheme(); 
+                if (!isDark) s.lightTheme(); 
                 else s.darkTheme();
                 if (s.userInput.Type == Setup::input::PLAY)
                 {
