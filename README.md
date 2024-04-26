@@ -1,6 +1,6 @@
 # Flappy Catty
 
-- Video Demo:
+- Video Demo: https://youtu.be/1v3jI2DhiX8
 
 # Giới thiệu game
 
@@ -106,6 +106,10 @@ Người chơi có thể chỉnh sáng nền tối nếu muốn.
 ### Về đồ họa của game:
 
 Chủ yếu là hình ảnh chỉnh sửa lại được lấy từ Google Image Search.
+
+### Tài liệu tham khảo
+- Tham khảo các hàm trong thư viện SDL2 trên https://lazyfoo.net/
+- Tham khảo các hướng dẫn về lập trình game.
 
 ### Về source code game:
 
